@@ -3,7 +3,7 @@ const puppeteer = require("puppeteer");
 const cnpj = "45110682000123";
 
 const getInfo = async () => {
-  const browser = await puppeteer.launch();
+  const browser = await puppeteer.launch({ headless: false });
   const page = await browser.newPage();
 
   await page.goto("https://receitaws.com.br/");
@@ -139,7 +139,7 @@ const getInfo = async () => {
 getInfo();
 
 const getData = async () => {
-  const browser = await puppeteer.launch();
+  const browser = await puppeteer.launch({ headless: false });
   const page = await browser.newPage();
 
   await page.goto("https://consultarcnpj.com.br/");
@@ -155,7 +155,7 @@ const getData = async () => {
     "#post-885 > div > div > div.container-cnpj > form > div.panel.panel-default.resultado-cnpj.form_cnpj > div > div.cnpj-control.input-sn.cnpj_responsavel"
   );
 
-  await page.waitForTimeout(1000);
+  await page.waitForTimeout(3000);
 
   const cnpjData = await page.evaluate(() => {
     return {
@@ -209,3 +209,57 @@ const getData = async () => {
 };
 
 getData();
+
+const getCnpjData = async () => {
+  const browser = await puppeteer.launch({ headless: false });
+  const page = await browser.newPage();
+
+  await page.goto("https://www.situacao-cadastral.com/");
+  const input = "#doc";
+
+  await page.waitForSelector(input);
+  await page.type(input, cnpj, { delay: 85 });
+
+  await page.click("#consultar");
+
+  await page.waitForSelector("#resultado > span.dados.nome");
+
+  const cnpjData = await page.evaluate(() => {
+    return {
+      fantasyName: document.querySelector("#resultado > span.dados.nome")
+        .textContent,
+
+      name: document.querySelector("#resultado > span:nth-child(3) > i")
+        .textContent,
+
+      city: document.querySelector("#resultado > span.dados.localidade > span")
+        .textContent,
+
+      situation: document.querySelector(
+        "#resultado > span.dados.situacao > span"
+      ).textContent,
+
+      openingDate: document.querySelector("#resultado > span:nth-child(4) > i")
+        .textContent,
+
+      type: document
+        .querySelector("#resultado > span.dados.localidade")
+        .textContent.split(":")[0],
+    };
+  });
+
+  const company = {
+    fantasyName: cnpjData.fantasyName,
+    name: cnpjData.name,
+    city: cnpjData.city,
+    situation: cnpjData.situation,
+    openingDate: cnpjData.openingDate,
+    type: cnpjData.type,
+  };
+
+  console.log("company ", company);
+
+  await browser.close();
+};
+
+getCnpjData();
