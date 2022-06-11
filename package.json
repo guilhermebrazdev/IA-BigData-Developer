@@ -1,0 +1,20 @@
+{
+  "name": "IA-BigData-Developer",
+  "version": "1.0.0",
+  "main": "./src/server.js",
+  "repository": "git@github.com:guilhermebrazdev/IA-BigData-Developer.git",
+  "author": "Guilherme Braz <guilhermebrazmoreirafaria@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "dev": "nodemon"
+  },
+  "dependencies": {
+    "axios": "^0.27.2",
+    "express": "^4.18.1",
+    "puppeteer": "^14.3.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.16",
+    "sucrase": "^3.21.0"
+  }
+}
