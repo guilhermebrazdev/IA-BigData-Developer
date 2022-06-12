@@ -9,7 +9,7 @@ import {
   CnpjController,
 } from "./controllers";
 
-(async () => {
+const scrapRun = async () => {
   const browser = await puppeteer.launch({ headless: false });
 
   const receitaCompany = await ReceitaController.getInfo(browser, cnpj);
@@ -32,4 +32,6 @@ import {
   // console.log("cnpjCompany ", cnpjCompany);
 
   await browser.close();
-})();
+};
+
+scrapRun();
