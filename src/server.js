@@ -3,17 +3,33 @@ const puppeteer = require("puppeteer");
 const cnpj = "45110682000123";
 
 import {
-  getReceitaCnpj,
-  getSituacaoCnpj,
-  getConsultarCnpj,
-  getCnpj,
-} from "./controller";
+  ReceitaController,
+  SituacaoController,
+  ConsultarController,
+  CnpjController,
+} from "./controllers";
 
-const scrapRun = () => {
-  getReceitaCnpj(puppeteer, cnpj);
-  getConsultarCnpj(puppeteer, cnpj);
-  getSituacaoCnpj(puppeteer, cnpj); // Não funciona no escuro
-  // getCnpj(puppeteer, cnpj); //----> API BLOQUEOU
-};
+(async () => {
+  const browser = await puppeteer.launch({ headless: false });
 
-scrapRun();
+  const receitaCompany = await ReceitaController.getInfo(browser, cnpj);
+
+  const consultaCompany = await ConsultarController.getConsultarCnpj(
+    browser,
+    cnpj
+  );
+
+  const situacaoCOmpany = await SituacaoController.getSituacaoCnpj(
+    browser,
+    cnpj
+  ); // Não funciona no escuro
+
+  // const cnpjCompany = await CnpjController.getCnpj(browser, cnpj); //----> API BLOQUEOU
+
+  console.log("receitaCompany ", receitaCompany);
+  console.log("consultaCompany ", consultaCompany);
+  console.log("situacaoCOmpany ", situacaoCOmpany);
+  // console.log("cnpjCompany ", cnpjCompany);
+
+  await browser.close();
+})();
