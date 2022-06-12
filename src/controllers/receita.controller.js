@@ -1,7 +1,7 @@
 import { ReceitaService } from "../services";
 
 class ReceitaController {
-  getInfo = async (browser, cnpj) => {
+  getReceita = async (browser, cnpj) => {
     const page = await browser.newPage();
 
     await page.goto("https://receitaws.com.br/");
