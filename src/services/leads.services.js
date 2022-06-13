@@ -118,19 +118,6 @@ class LeadsService {
           )
           .textContent.replace("\n", "")
           .trim(),
-        //---------------- aqui pra baixo so funciona empresa nacional -----------------
-        // telephone: document
-        //   .querySelector(
-        //     "#company-data > div:nth-child(14) > div.p4.bg--secondary.print-border.print-mr-2.print-grow-1 > p"
-        //   )
-        //   .textContent.replace("\n", "")
-        //   .trim(),
-
-        // eletronicAddress: document
-        //   .querySelector("#company-data > div:nth-child(14) > div > p")
-        //   .textContent.replace("\n", "")
-        //   .trim(),
-        //---------------------aqui em cima não funciona estrangeiro-------------
 
         socialCapital: document
           .querySelector("#company-data > div:nth-child(15) > p")
@@ -173,8 +160,6 @@ class LeadsService {
       district: cnpjData.district,
       city: cnpjData.city,
       state: cnpjData.state,
-      // telephone: cnpjData.telephone,
-      // eletronicAddress: cnpjData.eletronicAddress,
       socialCapital: cnpjData.socialCapital,
       situation: cnpjData.situation,
       dateSituation: cnpjData.dateSituation,
