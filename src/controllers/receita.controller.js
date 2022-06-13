@@ -3,6 +3,8 @@ import { ReceitaError } from "../errors";
 
 class ReceitaController {
   getReceitaCnpj = async (browser, cnpj) => {
+    console.log("RECEITA");
+
     const page = await browser.newPage();
 
     await page.goto("https://receitaws.com.br/");
@@ -18,8 +20,8 @@ class ReceitaController {
     await page.waitForTimeout(1000);
     const isError = await ReceitaError.error(page);
 
-    if (isError) {
-      return { error: "Too many request, please try again later" };
+    if (isError.status) {
+      return { error: isError.error };
     }
 
     await page.waitForSelector(

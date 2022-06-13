@@ -11,6 +11,7 @@ import {
   ConsultarController,
   CnpjController,
   LeadsController,
+  LinkanaController,
 } from "./controllers";
 
 const scrapRun = async () => {
@@ -26,17 +27,20 @@ const scrapRun = async () => {
   // const situacaoCOmpany = await SituacaoController.getSituacaoCnpj(
   //   browser,
   //   cnpj
-  // ); // Não funciona no escuro
+  // ); // Não funciona no escuro --> VAI SAIR !!
 
   const cnpjCompany = await CnpjController.getCnpj(browser, cnpj); //----> API BLOQUEOU
 
   const leadsCompany = await LeadsController.getLeadsCnpj(browser, cnpj);
+
+  const linkanaCompany = await LinkanaController.getLinkanaCnpj(browser, cnpj);
 
   console.log("receitaCompany ", receitaCompany);
   console.log("consultaCompany ", consultaCompany);
   // console.log("situacaoCOmpany ", situacaoCOmpany);
   console.log("cnpjCompany ", cnpjCompany);
   console.log("leadsCompany ", leadsCompany);
+  console.log("linkanaCompany ", linkanaCompany);
 
   await browser.close();
 };

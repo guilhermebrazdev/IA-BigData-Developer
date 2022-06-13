@@ -3,6 +3,8 @@ import { LeadsErrors } from "../errors";
 
 class LeadsController {
   getLeadsCnpj = async (browser, cnpj) => {
+    console.log("LEADS");
+
     const page = await browser.newPage();
     await page.goto("https://consultacnpj.com/");
 
@@ -16,8 +18,8 @@ class LeadsController {
     await page.waitForTimeout(1000);
     const isError = await LeadsErrors.error(page);
 
-    if (isError) {
-      return { error: "Too many requests, please try again later" };
+    if (isError.status) {
+      return { error: isError.error };
     }
 
     await page.waitForSelector("#company-data > div:nth-child(5) > p");

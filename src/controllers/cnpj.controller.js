@@ -1,7 +1,9 @@
 import { CnpjService } from "../services";
+import { CnpjError } from "../errors";
 
 class CnpjController {
   getCnpj = async (browser, cnpj) => {
+    console.log("CNPJ");
     const page = await browser.newPage();
 
     await page.goto("http://cnpj.info/busca");
@@ -24,6 +26,15 @@ class CnpjController {
     await page.click(
       "body > div.hdr > form > h3 > input[type=submit]:nth-child(2)"
     );
+
+    await page.waitForTimeout(1000);
+
+    const isError = await CnpjError.error(page);
+
+    if (isError.status) {
+      return { error: isError.error };
+    }
+
     await page.click("#content > ul > li > a:nth-child(3)");
 
     const company = CnpjService.infoSerialize(page);
