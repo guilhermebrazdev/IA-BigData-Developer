@@ -1,0 +1,12 @@
+services:
+  scraping:
+    container_name: cnpj_scraping
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./src:app/src
+    expose:
+      - 3000
+    ports:
+      - 3000:3000

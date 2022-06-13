@@ -6,7 +6,8 @@
   "author": "Guilherme Braz <guilhermebrazmoreirafaria@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "dev": "nodemon"
+    "dev": "nodemon",
+    "cnpj": "node -r sucrase/register src/server.js"
   },
   "dependencies": {
     "axios": "^0.27.2",

@@ -1,9 +1,11 @@
 const puppeteer = require("puppeteer");
 
-const argv = process.argv;
-console.log("argv ", typeof argv[2]);
+// const argv = process.argv[2]
+// console.log("argv ", typeof argv[2]);
 
-const cnpj = argv[2];
+const cnpj = process.argv[2];
+console.log("cnpj ", cnpj);
+console.log("cnpj type ", typeof cnpj);
 
 import {
   ReceitaController,
@@ -42,9 +44,15 @@ const scrapRun = async () => {
   console.log("leadsCompany ", leadsCompany);
   console.log("linkanaCompany ", linkanaCompany);
 
-  await browser.close();
+  // await browser.close();
 };
 
 scrapRun();
 
 // time node -r sucrase/register src/server.js 10766206000180
+
+//--------------------cnpj.info --------------------------//
+
+// document.querySelector("body > h1").textContent >> SERVIDOR SOBRECARREGADO  ============ 'Servidor está sobrecarregado com solicitações. Tente pesquisar um pouco mais tarde.\nServer is overloaded with requests. Try your search a bit later.'
+
+// document.querySelector("#content > ul > li") >> TAG DA BOX PARA ABRIR A INFO DA EMPRESA
