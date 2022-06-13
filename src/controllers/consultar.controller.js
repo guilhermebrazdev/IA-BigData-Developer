@@ -1,4 +1,5 @@
 import { ConsultarService } from "../services";
+import { ConsultaError } from "../errors";
 
 class ConsultarController {
   getConsultarCnpj = async (browser, cnpj) => {
@@ -12,6 +13,13 @@ class ConsultarController {
     await page.waitForSelector(input);
 
     await page.type(input, cnpj, { delay: 85 });
+
+    await page.waitForTimeout(1000);
+    const isError = await ConsultaError.error(page);
+
+    if (isError) {
+      return { error: "CNPJ not found in database, try another" };
+    }
 
     await page.waitForSelector(
       "#post-885 > div > div > div.container-cnpj > form > div.panel.panel-default.resultado-cnpj.form_cnpj > div > div.cnpj-control.input-sn.cnpj_responsavel"

@@ -1,4 +1,5 @@
 import { LeadsService } from "../services";
+import { LeadsErrors } from "../errors";
 
 class LeadsController {
   getLeadsCnpj = async (browser, cnpj) => {
@@ -11,6 +12,13 @@ class LeadsController {
     await page.waitForSelector(input);
 
     await page.type(input, cnpj, { delay: 85 });
+
+    await page.waitForTimeout(1000);
+    const isError = await LeadsErrors.error(page);
+
+    if (isError) {
+      return { error: "Too many requests, please try again later" };
+    }
 
     await page.waitForSelector("#company-data > div:nth-child(5) > p");
 

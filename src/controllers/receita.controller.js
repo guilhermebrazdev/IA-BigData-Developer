@@ -1,7 +1,8 @@
 import { ReceitaService } from "../services";
+import { ReceitaError } from "../errors";
 
 class ReceitaController {
-  getReceita = async (browser, cnpj) => {
+  getReceitaCnpj = async (browser, cnpj) => {
     const page = await browser.newPage();
 
     await page.goto("https://receitaws.com.br/");
@@ -14,6 +15,13 @@ class ReceitaController {
     await page.type(input, cnpj, { delay: 85 });
 
     page.on("popup");
+    await page.waitForTimeout(1000);
+    const isError = await ReceitaError.error(page);
+
+    if (isError) {
+      return { error: "Too many request, please try again later" };
+    }
+
     await page.waitForSelector(
       "#company-data-modal > div.px-5.pb-5 > div.ui.data.container-md > table:nth-child(2) > tbody > tr > td:nth-child(1)"
     );

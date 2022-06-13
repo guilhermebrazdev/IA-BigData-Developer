@@ -1,5 +1,5 @@
 class CnpjService {
-  infoSerialize = async () => {
+  infoSerialize = async (page) => {
     const cnpjData = await page.evaluate(() => {
       return {
         name: document.querySelector(
