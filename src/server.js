@@ -16,7 +16,7 @@ import {
 const scrapRun = async () => {
   const browser = await puppeteer.launch({ headless: false });
 
-  const receitaCompany = await ReceitaController.getReceita(browser, cnpj);
+  const receitaCompany = await ReceitaController.getReceitaCnpj(browser, cnpj);
 
   const consultaCompany = await ConsultarController.getConsultarCnpj(
     browser,
@@ -28,14 +28,14 @@ const scrapRun = async () => {
   //   cnpj
   // ); // Não funciona no escuro
 
-  // const cnpjCompany = await CnpjController.getCnpj(browser, cnpj); //----> API BLOQUEOU
+  const cnpjCompany = await CnpjController.getCnpj(browser, cnpj); //----> API BLOQUEOU
 
   const leadsCompany = await LeadsController.getLeadsCnpj(browser, cnpj);
 
   console.log("receitaCompany ", receitaCompany);
   console.log("consultaCompany ", consultaCompany);
   // console.log("situacaoCOmpany ", situacaoCOmpany);
-  // console.log("cnpjCompany ", cnpjCompany);
+  console.log("cnpjCompany ", cnpjCompany);
   console.log("leadsCompany ", leadsCompany);
 
   await browser.close();

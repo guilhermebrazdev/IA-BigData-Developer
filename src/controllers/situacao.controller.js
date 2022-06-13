@@ -12,6 +12,8 @@ class SituacaoController {
 
     await page.click("#consultar");
 
+    await page.screenshot({ path: "exemplo.png" });
+
     //   page.on("popup");
     await page.waitForTimeout(3000);
 
