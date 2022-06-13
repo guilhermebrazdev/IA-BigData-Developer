@@ -6,14 +6,16 @@ class ConsultaError {
       );
 
       if (nameTag.textContent === "") {
-        return true;
+        return {
+          status: true,
+          error: "CNPJ not found in database, pelase try another one",
+        };
       }
+
+      return { status: false };
     });
 
-    if (isError) {
-      return true;
-    }
-    return false;
+    return isError;
   };
 }
 
