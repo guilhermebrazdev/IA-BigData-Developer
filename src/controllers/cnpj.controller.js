@@ -10,6 +10,15 @@ class CnpjController {
 
     const input = "body > div.hdr > form > h3 > input[type=text]:nth-child(1)";
 
+    console.log("pre- erro");
+
+    let isError = await CnpjError.error(page);
+
+    console.log("pos- erro");
+    if (isError.status) {
+      return { error: isError.error };
+    }
+
     await page.waitForSelector(
       "body > div.hdr > form > h3 > input[type=text]:nth-child(1)"
     );
@@ -29,7 +38,7 @@ class CnpjController {
 
     await page.waitForTimeout(1000);
 
-    const isError = await CnpjError.error(page);
+    isError = await CnpjError.error(page);
 
     if (isError.status) {
       return { error: isError.error };
@@ -37,7 +46,8 @@ class CnpjController {
 
     await page.click("#content > ul > li > a:nth-child(3)");
 
-    const company = CnpjService.infoSerialize(page);
+    // const company = CnpjService.infoSerialize(page);
+    const company = "teste";
 
     return company;
   };

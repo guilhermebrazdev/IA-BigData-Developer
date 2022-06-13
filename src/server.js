@@ -17,7 +17,11 @@ import {
 } from "./controllers";
 
 const scrapRun = async () => {
-  const browser = await puppeteer.launch({ headless: false });
+  const browser = await puppeteer.launch({
+    // headless: false,
+    args: ["--no-sandbox", "--disable-setuid-sandbox"],
+    executablePath: "/usr/bin/google-chrome",
+  });
 
   const receitaCompany = await ReceitaController.getReceitaCnpj(browser, cnpj);
 
@@ -44,12 +48,13 @@ const scrapRun = async () => {
   console.log("leadsCompany ", leadsCompany);
   console.log("linkanaCompany ", linkanaCompany);
 
-  // await browser.close();
+  await browser.close();
 };
 
 scrapRun();
 
 // time node -r sucrase/register src/server.js 10766206000180
+// yarn cnpj 10766206000180
 
 //--------------------cnpj.info --------------------------//
 
