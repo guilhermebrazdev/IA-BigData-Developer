@@ -1,6 +1,14 @@
 class LeadsErrors {
   error = async (page) => {
     const isError = await page.evaluate(() => {
+      const nameTag = document.querySelector(
+        "#company-data > div:nth-child(7) > p"
+      );
+
+      const telTag = document.querySelector(
+        "#company-data > div:nth-child(14) > div.p4.bg--secondary.print-border.print-mr-2.print-grow-1 > p"
+      );
+
       const errorTag = document.querySelector(
         "#__layout > div > div.vue-notification-group.notifications > span > div > span > div > div.m-alert__content > p.m-alert__description.font-weight-light"
       );
@@ -27,13 +35,21 @@ class LeadsErrors {
             error: "CNPJ not found in database, please try another one",
           };
         }
+      }
 
-        if (invalidTag) {
-          return {
-            status: true,
-            error: "Invalid CNPJ, please try another one",
-          };
-        }
+      if (invalidTag) {
+        return {
+          status: true,
+          error: "Invalid CNPJ, please try another one",
+        };
+      }
+
+      if (!nameTag || !telTag) {
+        return {
+          status: true,
+          error:
+            "Something went wrong! We could not find this CNPJ, please try another time or another CNPJ",
+        };
       }
 
       return { status: false };

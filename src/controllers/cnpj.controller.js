@@ -46,8 +46,7 @@ class CnpjController {
 
     await page.click("#content > ul > li > a:nth-child(3)");
 
-    // const company = CnpjService.infoSerialize(page);
-    const company = "teste";
+    const company = CnpjService.infoSerialize(page);
 
     return company;
   };

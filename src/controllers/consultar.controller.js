@@ -16,7 +16,7 @@ class ConsultarController {
 
     await page.type(input, cnpj, { delay: 85 });
 
-    await page.waitForTimeout(1000);
+    await page.waitForTimeout(2000);
     const isError = await ConsultaError.error(page);
 
     if (isError.status) {
