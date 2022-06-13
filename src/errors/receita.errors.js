@@ -8,6 +8,9 @@ class ReceitaError {
       const invalidTag = document.querySelector(
         "body > div.swal2-container.swal2-center.swal2-backdrop-show > div > div.swal2-html-container"
       );
+      const notInCacheTag = document.querySelector(
+        "#company-data-modal > div.px-5.pb-5 > div.ui.hidden.negative.homequery.message > p"
+      );
 
       if (
         errorTag.textContent === "Too many requests, please try again later."
@@ -20,6 +23,13 @@ class ReceitaError {
 
       if (invalidTag) {
         return { status: true, error: "Invalid CNPJ, please try antoher one" };
+      }
+
+      if (notInCacheTag.textContent === "not in cache") {
+        return {
+          status: true,
+          error: "CNPJ not found in database, please try antoher one",
+        };
       }
 
       return { status: false };

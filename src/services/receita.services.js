@@ -4,87 +4,87 @@ class ReceitaService {
       return {
         lastUpdate: document.querySelector(
           "#company-data-modal > div.px-5.pb-5 > div.ui.data.container-md > table:nth-child(1) > tbody > tr > td"
-        ).innerHTML,
+        ).textContent,
 
         registerNumber: document.querySelector(
           "#company-data-modal > div.px-5.pb-5 > div.ui.data.container-md > table:nth-child(2) > tbody > tr > td:nth-child(1)"
-        ).innerHTML,
+        ).textContent,
 
         openingDate: document.querySelector(
           "#company-data-modal > div.px-5.pb-5 > div.ui.data.container-md > table:nth-child(2) > tbody > tr > td:nth-child(2)"
-        ).innerHTML,
+        ).textContent,
 
         name: document.querySelector(
           "#company-data-modal > div.px-5.pb-5 > div.ui.data.container-md > table:nth-child(3) > tbody > tr > td"
-        ).innerHTML,
+        ).textContent,
 
         fantasyName: document.querySelector(
           "#company-data-modal > div.px-5.pb-5 > div.ui.data.container-md > table:nth-child(4) > tbody > tr > td"
-        ).innerHTML,
+        ).textContent,
 
         activityCode: document.querySelector(
           "#company-data-modal > div.px-5.pb-5 > div.ui.data.container-md > table:nth-child(5) > tbody > tr > td:nth-child(1)"
-        ).innerHTML,
+        ).textContent,
 
         activityDescription: document.querySelector(
           "#company-data-modal > div.px-5.pb-5 > div.ui.data.container-md > table:nth-child(5) > tbody > tr > td:nth-child(2)"
-        ).innerHTML,
+        ).textContent,
 
         secundaryAtvCode: document.querySelector(
           "#company-data-modal > div.px-5.pb-5 > div.ui.data.container-md > table:nth-child(6) > tbody > tr > td:nth-child(1)"
-        ).innerHTML,
+        ).textContent,
 
         secundaryAtvDescription: document.querySelector(
           "#company-data-modal > div.px-5.pb-5 > div.ui.data.container-md > table:nth-child(6) > tbody > tr > td:nth-child(2)"
-        ).innerHTML,
+        ).textContent,
 
         address: document.querySelector(
           "#company-data-modal > div.px-5.pb-5 > div.ui.data.container-md > table:nth-child(8) > tbody > tr > td:nth-child(1)"
-        ).innerHTML,
+        ).textContent,
 
         addressNumber: document.querySelector(
           "#company-data-modal > div.px-5.pb-5 > div.ui.data.container-md > table:nth-child(8) > tbody > tr > td:nth-child(2)"
-        ).innerHTML,
+        ).textContent,
 
         addressComplement: document.querySelector(
           "#company-data-modal > div.px-5.pb-5 > div.ui.data.container-md > table:nth-child(8) > tbody > tr > td:nth-child(3)"
-        ).innerHTML,
+        ).textContent,
 
         cep: document.querySelector(
           "#company-data-modal > div.px-5.pb-5 > div.ui.data.container-md > table:nth-child(9) > tbody > tr > td:nth-child(1)"
-        ).innerHTML,
+        ).textContent,
 
         district: document.querySelector(
           "#company-data-modal > div.px-5.pb-5 > div.ui.data.container-md > table:nth-child(9) > tbody > tr > td:nth-child(2)"
-        ).innerHTML,
+        ).textContent,
 
         city: document.querySelector(
           "#company-data-modal > div.px-5.pb-5 > div.ui.data.container-md > table:nth-child(9) > tbody > tr > td:nth-child(3)"
-        ).innerHTML,
+        ).textContent,
 
         state: document.querySelector(
           "#company-data-modal > div.px-5.pb-5 > div.ui.data.container-md > table:nth-child(9) > tbody > tr > td:nth-child(4)"
-        ).innerHTML,
+        ).textContent,
 
         eletronicAddress: document.querySelector(
           "#company-data-modal > div.px-5.pb-5 > div.ui.data.container-md > table:nth-child(10) > tbody > tr > td:nth-child(1)"
-        ).innerHTML,
+        ).textContent,
 
         telephone: document.querySelector(
           "#company-data-modal > div.px-5.pb-5 > div.ui.data.container-md > table:nth-child(10) > tbody > tr > td:nth-child(2)"
-        ).innerHTML,
+        ).textContent,
 
-        socialCapital: document.querySelector(
-          "#company-data-modal > div.px-5.pb-5 > div.ui.data.container-md > table:nth-child(11) > tbody > tr > td"
-        ).innerHTML,
+        // socialCapital: document.querySelector(
+        //   "#company-data-modal > div.px-5.pb-5 > div.ui.data.container-md > table:nth-child(11) > tbody > tr > td"
+        // ).textContent,
 
-        status: document.querySelector(
-          "#company-data-modal > div.px-5.pb-5 > div.ui.data.container-md > table:nth-child(12) > tbody > tr > td:nth-child(1)"
-        ).innerHTML,
+        // status: document.querySelector(
+        //   "#company-data-modal > div.px-5.pb-5 > div.ui.data.container-md > table:nth-child(12) > tbody > tr > td:nth-child(1)"
+        // ).textContent,
 
-        statusDate: document.querySelector(
-          "#company-data-modal > div.px-5.pb-5 > div.ui.data.container-md > table:nth-child(12) > tbody > tr > td:nth-child(2)"
-        ).innerHTML,
+        // statusDate: document.querySelector(
+        //   "#company-data-modal > div.px-5.pb-5 > div.ui.data.container-md > table:nth-child(12) > tbody > tr > td:nth-child(2)"
+        // ).textContent,
       };
     });
 
@@ -107,9 +107,9 @@ class ReceitaService {
       state: cnpjData.state,
       eletronicAddress: cnpjData.eletronicAddress,
       telephone: cnpjData.telephone,
-      socialCapital: cnpjData.socialCapital,
-      status: cnpjData.status,
-      statusDate: cnpjData.statusDate,
+      // socialCapital: cnpjData.socialCapital,
+      // status: cnpjData.status,
+      // statusDate: cnpjData.statusDate,
     };
 
     return company;

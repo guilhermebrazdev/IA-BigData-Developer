@@ -10,17 +10,30 @@ class LeadsErrors {
       );
 
       if (errorTag) {
-        return {
-          status: true,
-          error: "Too many requests, please try again later",
-        };
-      }
+        if (
+          errorTag.textContent ===
+          "\n            Limite de busca excedido. Aguarde alguns instantes.\n          "
+        ) {
+          return {
+            status: true,
+            error: "Too many requests, please try again later",
+          };
+        } else if (
+          errorTag.textContent ===
+          "\n            Houve um erro ao buscar os dados do CNPJ.\n          "
+        ) {
+          return {
+            status: true,
+            error: "CNPJ not found in database, please try another one",
+          };
+        }
 
-      if (invalidTag) {
-        return {
-          status: true,
-          error: "Invalid CNPJ, please try another one",
-        };
+        if (invalidTag) {
+          return {
+            status: true,
+            error: "Invalid CNPJ, please try another one",
+          };
+        }
       }
 
       return { status: false };

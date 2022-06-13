@@ -18,7 +18,7 @@ import {
 
 const scrapRun = async () => {
   const browser = await puppeteer.launch({
-    // headless: false,
+    headless: false,
     args: ["--no-sandbox", "--disable-setuid-sandbox"],
     executablePath: "/usr/bin/google-chrome",
   });
@@ -35,7 +35,7 @@ const scrapRun = async () => {
   //   cnpj
   // ); // Não funciona no escuro --> VAI SAIR !!
 
-  const cnpjCompany = await CnpjController.getCnpj(browser, cnpj); //----> API BLOQUEOU
+  // const cnpjCompany = await CnpjController.getCnpj(browser, cnpj); //----> API BLOQUEOU
 
   const leadsCompany = await LeadsController.getLeadsCnpj(browser, cnpj);
 
@@ -44,7 +44,7 @@ const scrapRun = async () => {
   console.log("receitaCompany ", receitaCompany);
   console.log("consultaCompany ", consultaCompany);
   // console.log("situacaoCOmpany ", situacaoCOmpany);
-  console.log("cnpjCompany ", cnpjCompany);
+  // console.log("cnpjCompany ", cnpjCompany);
   console.log("leadsCompany ", leadsCompany);
   console.log("linkanaCompany ", linkanaCompany);
 
