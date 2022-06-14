@@ -28,5 +28,3 @@ class CnpjError {
 }
 
 export default new CnpjError();
-// 'Não encontrado\n'
-// document.querySelector('#content > ul').textContent

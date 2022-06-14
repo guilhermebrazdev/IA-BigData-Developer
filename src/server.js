@@ -1,15 +1,14 @@
 const puppeteer = require("puppeteer");
 
-const cnpj = process.argv[2];
-
 import {
   ReceitaController,
-  SituacaoController,
   ConsultarController,
   CnpjController,
   LeadsController,
   LinkanaController,
 } from "./controllers";
+
+const cnpj = process.argv[2];
 
 const scrapRun = async () => {
   const browser = await puppeteer.launch({
@@ -24,23 +23,21 @@ const scrapRun = async () => {
     cnpj
   );
 
-  // const situacaoCOmpany = await SituacaoController.getSituacaoCnpj(
-  //   browser,
-  //   cnpj
-  // ); // Não funciona no escuro --> VAI SAIR !!
-
-  // const cnpjCompany = await CnpjController.getCnpj(browser, cnpj); //----> API BLOQUEOU
+  const cnpjCompany = await CnpjController.getCnpj(browser, cnpj);
 
   const leadsCompany = await LeadsController.getLeadsCnpj(browser, cnpj);
 
   const linkanaCompany = await LinkanaController.getLinkanaCnpj(browser, cnpj);
 
-  console.log("receitaCompany ", receitaCompany);
-  console.log("consultaCompany ", consultaCompany);
-  // console.log("situacaoCOmpany ", situacaoCOmpany);
-  // console.log("cnpjCompany ", cnpjCompany);
-  console.log("leadsCompany ", leadsCompany);
-  console.log("linkanaCompany ", linkanaCompany);
+  console.log(
+    `---------------------------------------Results for:${cnpj}-----------------------------------------------`
+  );
+
+  console.log("\nreceitaCompany: ", receitaCompany, "\n------------------");
+  console.log("\nconsultaCompany: ", consultaCompany, "\n------------------");
+  console.log("\ncnpjCompany: ", cnpjCompany, "\n------------------");
+  console.log("\nleadsCompany: ", leadsCompany, "\n------------------");
+  console.log("\nlinkanaCompany: ", linkanaCompany);
 
   await browser.close();
 };

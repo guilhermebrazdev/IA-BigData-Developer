@@ -3,7 +3,7 @@ import { ConsultaError } from "../errors";
 
 class ConsultarController {
   getConsultarCnpj = async (browser, cnpj) => {
-    console.log("CONSULTAR");
+    console.log("---Scraping in CONSULTAR webpage---");
 
     const page = await browser.newPage();
 

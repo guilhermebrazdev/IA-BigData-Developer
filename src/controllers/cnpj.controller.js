@@ -3,18 +3,16 @@ import { CnpjError } from "../errors";
 
 class CnpjController {
   getCnpj = async (browser, cnpj) => {
-    console.log("CNPJ");
+    console.log("---Scraping in CNPJ webpage---");
+
     const page = await browser.newPage();
 
     await page.goto("http://cnpj.info/busca");
 
     const input = "body > div.hdr > form > h3 > input[type=text]:nth-child(1)";
 
-    console.log("pre- erro");
-
     let isError = await CnpjError.error(page);
 
-    console.log("pos- erro");
     if (isError.status) {
       return { error: isError.error };
     }

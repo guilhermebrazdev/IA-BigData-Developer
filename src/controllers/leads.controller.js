@@ -3,7 +3,7 @@ import { LeadsErrors } from "../errors";
 
 class LeadsController {
   getLeadsCnpj = async (browser, cnpj) => {
-    console.log("LEADS");
+    console.log("---Scraping in LEADS webpage---");
 
     const page = await browser.newPage();
     await page.goto("https://consultacnpj.com/");

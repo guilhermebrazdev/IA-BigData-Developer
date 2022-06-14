@@ -3,7 +3,7 @@ import { ReceitaError } from "../errors";
 
 class ReceitaController {
   getReceitaCnpj = async (browser, cnpj) => {
-    console.log("RECEITA");
+    console.log("\n---Scraping in RECEITA webpage---");
 
     const page = await browser.newPage();
 

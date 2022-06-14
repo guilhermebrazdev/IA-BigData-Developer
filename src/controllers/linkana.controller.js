@@ -3,7 +3,7 @@ import { LinkanaError } from "../errors";
 
 class LinkanaController {
   getLinkanaCnpj = async (browser, cnpj) => {
-    console.log("LINKANA");
+    console.log("---Scraping in LINKANA webpage---");
 
     const page = await browser.newPage();
 
