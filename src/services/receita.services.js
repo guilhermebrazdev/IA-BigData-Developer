@@ -73,18 +73,6 @@ class ReceitaService {
         telephone: document.querySelector(
           "#company-data-modal > div.px-5.pb-5 > div.ui.data.container-md > table:nth-child(10) > tbody > tr > td:nth-child(2)"
         ).textContent,
-
-        // socialCapital: document.querySelector(
-        //   "#company-data-modal > div.px-5.pb-5 > div.ui.data.container-md > table:nth-child(11) > tbody > tr > td"
-        // ).textContent,
-
-        // status: document.querySelector(
-        //   "#company-data-modal > div.px-5.pb-5 > div.ui.data.container-md > table:nth-child(12) > tbody > tr > td:nth-child(1)"
-        // ).textContent,
-
-        // statusDate: document.querySelector(
-        //   "#company-data-modal > div.px-5.pb-5 > div.ui.data.container-md > table:nth-child(12) > tbody > tr > td:nth-child(2)"
-        // ).textContent,
       };
     });
 
@@ -107,9 +95,6 @@ class ReceitaService {
       state: cnpjData.state,
       eletronicAddress: cnpjData.eletronicAddress,
       telephone: cnpjData.telephone,
-      // socialCapital: cnpjData.socialCapital,
-      // status: cnpjData.status,
-      // statusDate: cnpjData.statusDate,
     };
 
     return company;

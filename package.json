@@ -10,8 +10,6 @@
     "cnpj": "node -r sucrase/register src/server.js"
   },
   "dependencies": {
-    "axios": "^0.27.2",
-    "express": "^4.18.1",
     "puppeteer": "^14.3.0"
   },
   "devDependencies": {
